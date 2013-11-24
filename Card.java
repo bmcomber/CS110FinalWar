@@ -35,11 +35,26 @@ public class Card
    {
       return image;
    }
-   
+
+   /**set methods allow the client to set the card's attributes for error-checking
+   @param: setRank sets rank to the int, setSuit sets suit to the String, setImage sets image to the String file
+   */
+      
    public void setRank(int rank)
    {
       this.rank = rank;
    }
+   
+   public void setSuit(String suit)
+   {
+      this.suit = suit;
+   }
+   
+   public void setImage(String image)
+   {
+      this.image = image;
+   }
+   
    
    /**toString method returns a string representation of the object's fields
    @return: rank, suit, image file
