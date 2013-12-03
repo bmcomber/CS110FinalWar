@@ -1,4 +1,4 @@
-/**War class contains all implementation necessary to play the GUI game of War
+/**War class contains necessary constructors and methods for GUI game of War
 */
 
 import java.util.ArrayList;
@@ -87,13 +87,13 @@ public class War
          deck1.remove(0);
       }
 
-      /**getImage methods make it easier to return the String necessary for the ImageIcon objects in GUI class
+      /**getImage methods make it returns the necessary for the ImageIcon objects from card class
          @param: the index of the required card image
          @return: the String for the card image
       */
-      public ImageIcon getImage1(int i)
+      public ImageIcon getImage1(int f)
       {
-         return deck1.get(i).getIcon();
+         return deck1.get(f).getIcon();
       }
 
       public ImageIcon getImage2(int k)
@@ -113,6 +113,9 @@ public class War
          return empty;
       }
       
+      /**size returns the size of the corresponding deck
+         @return: int size of the deck
+       */
       public int size1()
       {
          return deck1.size();

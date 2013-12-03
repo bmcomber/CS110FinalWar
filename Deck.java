@@ -130,56 +130,80 @@ public class Deck
       //Create all 14 diamond Card objects and add them to the deck ArrayList
       Card d2 = new Card(2, "diamonds", "2d.jpg");
       deck.add(d2);
+      
       Card d3 = new Card(3, "diamonds", "3d.jpg");
       deck.add(d3);
+      
       Card d4 = new Card(4, "diamonds", "4d.jpg");
       deck.add(d4);
+      
       Card d5 = new Card(5, "diamonds", "5d.jpg");
       deck.add(d5);
+      
       Card d6 = new Card(6, "diamonds", "6d.jpg");
       deck.add(d6);
+      
       Card d7 = new Card(7, "diamonds", "7d.jpg");
       deck.add(d7);
+      
       Card d8 = new Card(8, "diamonds", "8d.jpg");
       deck.add(d8);
+      
       Card d9 = new Card(9, "diamonds", "9d.jpg");
       deck.add(d9);
+      
       Card d10 = new Card(10, "diamonds", "10d.jpg");
       deck.add(d10);
+      
       Card d11 = new Card(11, "diamonds", "jackd.jpg");
       deck.add(d11);
+      
       Card d12 = new Card(12, "diamonds", "queend.jpg");
       deck.add(d12);
+      
       Card d13 = new Card(13, "diamonds", "kingd.jpg");
       deck.add(d13);
+      
       Card d14 = new Card(14, "diamonds", "aced.jpg");
       deck.add(d14);
       
       //Create all 14 spade Card objects and add them to the deck ArrayList   
       Card s2 = new Card(2, "spades", "2s.jpg");
       deck.add(s2);
+      
       Card s3 = new Card(3, "spades", "3s.jpg");
       deck.add(s3);
+      
       Card s4 = new Card(4, "spades", "4s.jpg");
       deck.add(s4);
+      
       Card s5 = new Card(5, "spades", "5s.jpg");
       deck.add(s5);
+      
       Card s6 = new Card(6, "spades", "6s.jpg");
       deck.add(s6);
+      
       Card s7 = new Card(7, "spades", "7s.jpg");
       deck.add(s7);
+      
       Card s8 = new Card(8, "spades", "8s.jpg");
       deck.add(s8);
+      
       Card s9 = new Card(9, "spades", "9s.jpg");
       deck.add(s9);
+      
       Card s10 = new Card(10, "spades", "10s.jpg");
       deck.add(s10);
+      
       Card s11 = new Card(11, "spades", "jacks.jpg");
       deck.add(s11);
+      
       Card s12 = new Card(12, "spades", "queens.jpg");
       deck.add(s12);
+      
       Card s13 = new Card(13, "spades", "kings.jpg");
       deck.add(s13);
+      
       Card s14 = new Card(14, "spades", "aces.jpg");
       deck.add(s14);
       

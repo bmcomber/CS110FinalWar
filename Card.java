@@ -10,7 +10,7 @@ public class Card
    private ImageIcon icon;
    
    
-   /**Card Consructor takes creates a new card object with a rank, suut and image
+   /**Card Consructor takes creates a new card object with a rank, suut and imageicon
      @param: int rank (1 to 14, ace high), String suit, String image file
    */
    public Card(int rank, String suit, String image)
