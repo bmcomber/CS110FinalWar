@@ -26,56 +26,104 @@ public class Deck
       //Create all 14 club Card objects and add them to the deck ArrayList
       Card c2 = new Card(2, "clubs", "2c.jpg");
       deck.add(c2);
+      
       Card c3 = new Card(3, "clubs", "3c.jpg");
+      //ImageIcon i3 = new ImageIcon(c3.getImage());
       deck.add(c3);
+      
       Card c4 = new Card(4, "clubs", "4c.jpg");
+      //ImageIcon i4 = new ImageIcon(c4.getImage());
       deck.add(c4);
+      
       Card c5 = new Card(5, "clubs", "5c.jpg");
+      //ImageIcon i5 = new ImageIcon(c5.getImage());
       deck.add(c5);
+      
       Card c6 = new Card(6, "clubs", "6c.jpg");
+      //ImageIcon i6 = new ImageIcon(c6.getImage());
       deck.add(c6);
+      
       Card c7 = new Card(7, "clubs", "7c.jpg");
+      //ImageIcon i7 = new ImageIcon(c7.getImage());
       deck.add(c7);
+      
       Card c8 = new Card(8, "clubs", "8c.jpg");
+      //ImageIcon i8 = new ImageIcon(c8.getImage());
       deck.add(c8);
+      
       Card c9 = new Card(9, "clubs", "9c.jpg");
+      //ImageIcon i9 = new ImageIcon(c9.getImage());
       deck.add(c9);
+      
       Card c10 = new Card(10, "clubs", "10c.jpg");
+      //ImageIcon i10 = new ImageIcon(c10.getImage());
       deck.add(c10);
+      
       Card c11 = new Card(11, "clubs", "jackc.jpg");
+      //ImageIcon i11 = new ImageIcon(c11.getImage());
       deck.add(c11);
+      
       Card c12 = new Card(12, "clubs", "queenc.jpg");
+      //ImageIcon i12 = new ImageIcon(c12.getImage());
       deck.add(c12);
+      
       Card c13 = new Card(13, "clubs", "kingc.jpg");
+      //ImageIcon i13 = new ImageIcon(c13.getImage());
       deck.add(c13);
+      
       Card c14 = new Card(14, "clubs", "acec.jpg");
+      //ImageIcon i14 = new ImageIcon(c14.getImage());
       deck.add(c14);
   
       //Create all 14 heart Card Objects and add them to the deck ArrayList   
       Card h2 = new Card(2, "hearts", "2h.jpg");
       deck.add(h2);
+      //ImageIcon k = new ImageIcon(h2.getImage());
+      
       Card h3 = new Card(3, "hearts", "3h.jpg");
       deck.add(h3);
+      
+      
       Card h4 = new Card(4, "hearts", "4h.jpg");
       deck.add(h4);
+      
+      
       Card h5 = new Card(5, "hearts", "5h.jpg");
       deck.add(h5);
+      
+      
       Card h6 = new Card(6, "hearts", "6h.jpg");
       deck.add(h6);
+      
+      
       Card h7 = new Card(7, "hearts", "7h.jpg");
       deck.add(h7);
+      
+      
       Card h8 = new Card(8, "hearts", "8h.jpg");
       deck.add(h8);
+      
+      
       Card h9 = new Card(9, "hearts", "9h.jpg");
       deck.add(h9);
+      
+      
       Card h10 = new Card(10, "hearts", "10h.jpg");
       deck.add(h10);
+      
+      
       Card h11 = new Card(11, "hearts", "jackh.jpg");
       deck.add(h11);
+      
+      
       Card h12 = new Card(12, "hearts", "queenh.jpg");
       deck.add(h12);
+      
+      
       Card h13 = new Card(13, "hearts", "kingh.jpg");
       deck.add(h13);
+      
+      
       Card h14 = new Card(14, "hearts", "aceh.jpg");
       deck.add(h14);
       
@@ -138,6 +186,8 @@ public class Deck
       //return the completely filled deck ArrayList
       return deck;
    }
+   
+  
    
 }
    

@@ -1,11 +1,15 @@
 /**Card Class Creates a new individual card object with a rank, suit and Image*/
 
+import javax.swing.*;
+
 public class Card
 {
    //Card Object fields
    private int rank;
    private String suit;
    private String image;
+   private ImageIcon icon;
+   
    
    /**Card Consructor takes creates a new card object with a rank, suut and image
      @param: int rank (1 to 14, ace high), String suit, String image file
@@ -15,6 +19,7 @@ public class Card
       this.rank = rank;
       this.suit = suit;
       this.image = image;
+      icon = new ImageIcon(this.image);
    }
    
    /**Get methods allow the client to view and use the card's attributes
@@ -34,6 +39,11 @@ public class Card
    public String getImage()
    {
       return image;
+   }
+   
+   public ImageIcon getIcon()
+   {
+      return icon;
    }
 
    /**set methods allow the client to set the card's attributes for error-checking
