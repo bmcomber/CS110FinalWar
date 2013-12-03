@@ -47,6 +47,7 @@ public class WarGUI extends JFrame
       //add the flip button in middle 
       panel3 = new JPanel();
       flipButton = new Button("Flip Card");
+      flipButton.addActionListener(new ButtonListener());
       panel3.add(flipButton);
       add(panel3);
       
@@ -64,93 +65,122 @@ public class WarGUI extends JFrame
       panel5.add(deck2);
       add(panel5);
   }
-}
 
-//     /**while the decks are not empty, allow users to play the game*/        
-//     while(deck1.isEmpty() == false && deck2.isEmpty() == false)
-//     {
-//         
-//       
-//       //save result from flip (flip compares the first card for both players and returns a 0 if equal, 1 if 2>1, 2 if 2>1
-//       int result = game.flip();
-//       boolean equal = false;
-//   
-//       //if they are equal, set equal to true so the players go to war
-//       if (result == 0)
-//       {
-//          //make the button go to war on the next press
-//          equal = true;
-//       }
-//       //otherwise add flipped cards to the winning deck
-//       if(result != 0)
-//       
-//          if(result == 1)
-//             addDeck1(deck1, deck2);
-//          else if(result == 2)
-//             addDeck2(deck1, deck2);
-//             
-//       }
-//       
-//       //go to war if they are equal
-//                   while( equal == true)
-//       {
-//       //go to war: set the index to 2 so the flipped command can be used to check the 3rd cards in the arraylist
-//       int index = 2;
-//     
-//          //get new flipped results
-//          int result2 = flip(deck1, deck2, index);
-//          
-//         //if the results are not equal add all cards to the winning deck and quit the war loop
-//          if(result2 == 1)
-//          {
-//          
-//             for (int n = 0; n<= index; n++)
-//             {
-//                addDeck1(deck1, deck2);
-//             }
-//             equal = false;
-//          }
-//          else if(result2 == 2)
-//          {
-//             for (int m = 0; m<= index; m++)
-//             {
-//                addDeck2(deck1, deck2);
-//             }
-//             equal = false;
-//          }
-//          if(deck1.isEmpty() == true || deck1.isEmpty() == true)
-//             equal = false;
-//             
-//          //if a player will run out of cards during the war, add remaining cards to the other player's deck
-//          while(equal != false)
-//          {
-//             if(index >= deck1.size())
-//             {
-//                               for (int b = 0; b<=index; b++)
-//                {
-//                   addDeck2(deck2, deck1);
-//                }
-//                //quit the war loop and declare the other player the winner
-//                equal = false;
-//             }
-//             if(index >= deck2.size())
-//             {
-//                          
-//                //add remaining cards to player 1's deck
-//                for (int c = 0; c<=index; c++)
-//                {
-//                   addDeck2(deck2, deck1);
-//                }
-//                //quit the war loop and declare the other player the winner
-//                equal = false;
-//             }
-//             //increment the index by 2
-//             index+=2;
-//            }
-// 
-//       }
-//     
-//       
-//       
-//       
+
+   // handle button events
+   private class ButtonListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {  
+      
+      /**while the decks are not empty, allow users to play the game*/        
+         while(game.isEmpty() == false)
+         {
+        
+            //save result from flip (flip compares the first card for both players and returns a 0 if equal, 1 if 2>1, 2 if 2>1
+            int result = game.flip(0);
+            
+            //show the flip
+            drawn1.setIcon(game.getImage1(0));
+            panel4.add(drawn1);
+            
+            drawn2.setIcon(game.getImage2(0));
+            panel2.add(drawn2);
+            
+            boolean equal = false;
+            
+            //panel4.setIcon(
+            //if they are equal, set equal to true so the players go to war
+            if (result == 0)
+            {
+            //make the button go to war on the next press
+            equal = true;
+            }  
+            
+            //otherwise add flipped cards to the winning deck
+            if(result == 1)
+            {
+            game.addDeck1();
+            //back of card
+            drawn1.setIcon(back);
+            panel4.add(drawn1);
+            
+            drawn2.setIcon(back);
+            panel2.add(drawn2);
+            }
+            else if(result == 2)
+            {
+            game.addDeck2();
+            //back of card
+            drawn1.setIcon(back);
+            panel4.add(drawn1);
+            
+            drawn2.setIcon(back);
+            panel2.add(drawn2);
+            }
+         
+      
+         //go to war if they are equal
+       while(equal == true)
+       {
+         //go to war: set the index to 2 so the flipped command can be used to check the 3rd cards in the arraylist
+         int index = 2;
+    
+         //get new flipped results
+         int result2 = game.flip(index);
+         
+         //if the results are not equal add all cards to the winning deck and quit the war loop
+         if(result2 == 1)
+         {
+         
+            for (int n = 0; n<= index; n++)
+            {
+               game.addDeck1();
+            }
+            equal = false;
+         }
+         else if(result2 == 2)
+         {
+            for (int m = 0; m<= index; m++)
+            {
+               game.addDeck2();
+            }
+            equal = false;
+         }
+         if(game.isEmpty()== true)
+            equal = false;
+            
+         //if a player will run out of cards during the war, add remaining cards to the other player's deck
+         while(equal != false)
+         {
+            if(index >= game.size1())
+            {
+              for (int b = 0; b<=index; b++)
+               {
+                  game.addDeck2();
+               }
+               //quit the war loop and declare the other player the winner
+               equal = false;
+            }
+            if(index >= game.size2())
+            {
+                         
+               //add remaining cards to player 1's deck
+               for (int c = 0; c<=index; c++)
+               {
+                  game.addDeck2();
+               }
+               //quit the war loop and declare the other player the winner
+               equal = false;
+            }
+            //increment the index by 2
+            index+=2;
+         }
+       }
+      }
+     }
+   }   
+      
+ }     
+      
    

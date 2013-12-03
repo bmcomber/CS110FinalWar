@@ -23,7 +23,10 @@ public class War
 
       //shuffle deck
       Collections.shuffle(fullDeck);
- 
+      //for(int g = 0; g<52; g++)
+        // System.out.println(fulldeck(g))
+         
+     
       //Declare new ArrayList for player1's card deck 
       deck1 = new ArrayList<Card>(26);
       
@@ -108,6 +111,16 @@ public class War
          if(deck1.isEmpty() == true || deck2.isEmpty() == true)
             empty = true;
          return empty;
+      }
+      
+      public int size1()
+      {
+         return deck1.size();
+      }
+      
+      public int size2()
+      {
+         return deck2.size();
       }
 }
 

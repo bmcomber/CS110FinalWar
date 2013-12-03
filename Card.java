@@ -7,7 +7,6 @@ public class Card
    //Card Object fields
    private int rank;
    private String suit;
-   private String image;
    private ImageIcon icon;
    
    
@@ -18,8 +17,7 @@ public class Card
    {
       this.rank = rank;
       this.suit = suit;
-      this.image = image;
-      icon = new ImageIcon(this.image);
+      icon = new ImageIcon(image);
    }
    
    /**Get methods allow the client to view and use the card's attributes
@@ -35,12 +33,7 @@ public class Card
    {
       return suit;
    }
-   
-   public String getImage()
-   {
-      return image;
-   }
-   
+
    public ImageIcon getIcon()
    {
       return icon;
@@ -59,11 +52,7 @@ public class Card
    {
       this.suit = suit;
    }
-   
-   public void setImage(String image)
-   {
-      this.image = image;
-   }
+
    
    
    /**toString method returns a string representation of the object's fields
@@ -71,7 +60,7 @@ public class Card
    */
    public String toString()
    {
-      String s = rank + ", " + suit + ", " + image;
+      String s = rank + ", " + suit;
       return s;
    } 
    
