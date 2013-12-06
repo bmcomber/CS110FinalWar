@@ -31,9 +31,9 @@ public class WarGUI extends JFrame
       //Image icon for the back of the cards
       back = new ImageIcon("back.jpg");
       
-      //add panel1 as facedown
+      //add panel1 as facedown with a counter for cards
       panel1 = new JPanel();
-      deck1 = new JLabel();
+      deck1 = new JLabel(game.strSize1());
       deck1.setIcon(back);
       panel1.add(deck1);
       add(panel1);
@@ -45,6 +45,7 @@ public class WarGUI extends JFrame
       panel2.add(drawn1);
       add(panel2);
      
+      //panel3 facedown
       panel3 = new JPanel();
       war1 = new JLabel();
       war1.setIcon(back);
@@ -58,6 +59,7 @@ public class WarGUI extends JFrame
       panel4.add(flipButton);
       add(panel4);
       
+      //warbutton in middle
       panel5 = new JPanel();
       warButton = new Button("Go to War");
       warButton.addActionListener(new WarButton());
@@ -65,15 +67,16 @@ public class WarGUI extends JFrame
       warButton.setEnabled(false);
       add(panel5);
       
+      //panel 6 facedown
       panel6 = new JPanel();
       war2 = new JLabel();
       war2.setIcon(back);
       panel6.add(war2);
       add(panel6);
       
-      //add panel7 facedown
+      //add panel7 facedown with counter for cards
       panel7 = new JPanel();
-      drawn2 = new JLabel();
+      drawn2 = new JLabel(game.strSize2());
       drawn2.setIcon(back);
       panel7.add(drawn2);
       add(panel7);
@@ -88,72 +91,85 @@ public class WarGUI extends JFrame
  
 
 
-   // handle button events
+   /**FlipButton acts when the users draw and the cards are not equal
+   */
    private class FlipButton implements ActionListener
    {
       
       public void actionPerformed(ActionEvent e)
       {  
-      
-//           if(game.isEmpty() == false)
-//           {
+           //do not do anything on press if either deck is empty
+           if(game.isEmpty()==false)
+           {
+
             //save result from flip
             int result = game.flip(0);
             
             //show the flip
-            ImageIcon I = game.getImage1(0);
-            drawn2.setIcon(game.getImage1(0));
-            //panel4.add(drawn2);
-            
-            drawn1.setIcon(game.getImage2(0));
-            //panel2.add(drawn1);
+            drawn2.setIcon(game.getImage2(0));
+            war1.setIcon(back);
+            war2.setIcon(back);
+            drawn1.setIcon(game.getImage1(0));
             
             
-            //if they are equal, set equal to true so the players go to war
+            //if they are equal,go to war
             if (result == 0)
             {
                warButton.setEnabled(true);
+               flipButton.setEnabled(false);
+               deck1.setText(game.strSize1());
+               drawn2.setText(game.strSize2());
             }  
             
             //otherwise add flipped cards to the winning deck
             if(result == 1)
             {
                game.addDeck1();
-               //Show the back of card
-               //drawn1.setIcon(back);
-               //panel4.add(drawn1);
                
-               //drawn2.setIcon(back);
-               //panel2.add(drawn2);
             }
             else if(result == 2)
             {
                game.addDeck2();
-               //show the back of card
-               //drawn1.setIcon(back);
-               //panel4.add(drawn1);
-               
-               //drawn2.setIcon(back);
-               //panel2.add(drawn2);
-               }
+
+            }
+           //display number of cards
+           deck1.setText(game.strSize1());
+           drawn2.setText(game.strSize2());
+           }
+           //print the winner if someone has no cards left
+           else if(game.size1() == 0)
+           {
+               JOptionPane.showMessageDialog(null, "Player 2 has won the Game!");
+           }
+           else
+           {
+               JOptionPane.showMessageDialog(null, "Player 1 has won the Game");
+           }
+
         } 
       } 
        
-       
+    /**WarButton class acts when the users have drawn the same card
+    */   
    private class WarButton implements ActionListener
    {   
        public void actionPerformed(ActionEvent f)
        {
-       //JOptionPane if war
-       //go to war if they are equal
-         boolean equal = true;
+       //if either player has less than the three cards required for war, do not let them draw
+       if(game.size1()>=3 || game.size2()>=3)
+       {
+       drawn1.setIcon(back);
+       drawn2.setIcon(back);
+       war1.setIcon(game.getImage1(2));
+       war2.setIcon(game.getImage2(2));
+       
          //go to war: set the index to 2 so the flipped command can be used to check the 3rd cards in the arraylist
          int index = 2;
     
          //get new flipped results
          int result2 = game.flip(index);
          
-         //if the results are not equal add all cards to the winning deck and quit the war loop
+         //if the results are not equal add all cards to the winning deck
          if(result2 == 1)
          {
          
@@ -161,7 +177,8 @@ public class WarGUI extends JFrame
             {
                game.addDeck1();
             }
-            equal = false;
+           warButton.setEnabled(false);
+           flipButton.setEnabled(true);
          }
          else if(result2 == 2)
          {
@@ -169,48 +186,33 @@ public class WarGUI extends JFrame
             {
                game.addDeck2();
             }
-            equal = false;
+           warButton.setEnabled(false);
+           flipButton.setEnabled(true);
+      
          }  
-         //quit the war loop if a player has run out of cards and declare a winner
-         if(game.isEmpty()== true)
-            equal = false;
-         
-         //Declare a winner with JOptionPane if someone has run out of cards
-            
-//          /**make sure that if a player will run out of cards during the next war,
-//             the rest of their cards go into the other's deck and they will lose the game   
-//          */
-//          while(equal != false)
-//          {
-//             if(index >= game.size1())
-//             {
-//               //add remaining cards to player 1's deck
-//               for (int b = 0; b<=index; b++)
-//                {
-//                   game.addDeck2();
-//                }
-//                //quit the war loop and declare the other player the winner
-//                equal = false;
-//             }
-//             if(index >= game.size2())
-//             {
-//                for (int c = 0; c<=index; c++)
-//                {
-//                   game.addDeck2();
-//                }
-//                //quit the war loop and declare the other player the winner
-//                equal = false;
-//             }
+         else     //the players need to go to war again
+         {
+            warButton.setEnabled(true);
             //increment the index by 2 for the next war iteration
             index+=2;
          }
+         //display the remaining cards
+         deck1.setText(game.strSize1());
+         drawn2.setText(game.strSize2());
         }
-        //if either player has no cards, declare a winner
- //        else
-//         {
-//             System.out.println("Somebody has no cards");
-//         } 
-       }
+        //if either player will run out of cards during war, the other player won
+        else if(game.size1()<=2)
+        {
+            JOptionPane.showMessageDialog(null,"Player 1 has run out of Cards during the game. Player 2 wins!");
+        }
+        else if(game.size2()<=2)
+        {
+            JOptionPane.showMessageDialog(null,"Player 2 has run out of Cards during the game. Player 1 wins!");
+        }
+      }
+   }
+ 
+}
       
      
       

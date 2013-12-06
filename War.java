@@ -45,7 +45,6 @@ public class War
          deck2.add(fullDeck.get(h));
       }
    }
-   
       
    /**flip method takes the two arrayLists of Card objects, gets the first element's rank and compares them  
       @return: int 0: the ranks are equal
@@ -124,6 +123,21 @@ public class War
       public int size2()
       {
          return deck2.size();
+      }
+      
+      /**StrSize returns the size of the corresponding deck in a string representation
+      @return: the size as a string
+      */
+      public String strSize1()
+      {
+         String str = Integer.toString(deck1.size());
+         return str;
+      }
+      
+      public String strSize2()
+      {
+         String str = Integer.toString(deck2.size());
+         return str;
       }
 }
 

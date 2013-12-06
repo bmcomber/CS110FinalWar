@@ -10,7 +10,7 @@ public class WarDriver
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.pack();
       // OR
-      frame.setSize(1300,300);
+      frame.setSize(1500,300);
       frame.validate();
       frame.setVisible(true);
    }
